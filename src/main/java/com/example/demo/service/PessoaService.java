@@ -29,7 +29,13 @@ public class PessoaService {
 	
 	@Transactional(value = TxType.REQUIRED)
 	public Pessoa salvar(Pessoa pessoa) {
-		return repository.save(pessoa);
+		repository.save(pessoa);
+		
+		pessoa
+			.getEnderecos()
+			.forEach(end -> end.setIdPessoa(pessoa.getId()));
+		
+		return pessoa;
 	}
 
 	@Transactional(value = TxType.REQUIRED)
