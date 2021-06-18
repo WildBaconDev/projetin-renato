@@ -19,7 +19,6 @@ public class PessoaService {
 	private PessoaRepository repository;
 	
 	public List<Pessoa> listar() {
-		System.out.println("aqui");
 		return repository.findAll();
 	}
 
